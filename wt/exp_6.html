@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Layout with CSS</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+        .header, .footer {
+            grid-column: 1 / span 2;
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .sidebar {
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        .content {
+            background-color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Main Content</div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Layout with CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Grid container */
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "sidebar content right-sidebar"
+                "footer footer footer";
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        /* Header and Footer */
+        .header, .footer {
+            grid-column: 1 / span 3;
+            background-color: #444;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            grid-area: header;
+        }
+
+        .footer {
+            grid-area: footer;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Content Area */
+        .content {
+            grid-area: content;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+
+        .content .cards {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            padding: 20px;
+            width: 30%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Right Sidebar */
+        .right-sidebar {
+            grid-area: right-sidebar;
+            background-color: #e7e7e7;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .right-sidebar ul li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .right-sidebar ul li:hover {
+            background-color: #444;
+            color: white;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas:
+                    "header"
+                    "content"
+                    "sidebar"
+                    "right-sidebar"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .content .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">Header Area</div>
+
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <h3>Sidebar Menu</h3>
+            <ul>
+                <li>Dashboard</li>
+                <li>Profile</li>
+                <li>Settings</li>
+                <li>Help</li>
+                <li>Logout</li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+            <h2>Main Content Area</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque leo nec eros ultrices, ac tempor lectus congue. Mauris tristique justo et facilisis dignissim. Suspendisse potenti.</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" alt="Card image">
+                    <h3>Card Title 1</h3>
+                    <p>This is a description of the card content. It has text, images, and hover effects.</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" alt="Card image">
+                    <h3>Card Title 2</h3>
+                    <p>This is a description of the card content. It has text, images, and hover effects.</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" alt="Card image">
+                    <h3>Card Title 3</h3>
+                    <p>This is a description of the card content. It has text, images, and hover effects.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <h3>Related Links</h3>
+            <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+                <li>Link 4</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">Footer Area</div>
+    </div>
+
+</body>
+</html>
